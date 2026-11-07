@@ -37,21 +37,21 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-16 sm:py-20 bg-white border-b border-registrar-ink-border">
+    <section id="faq" className="py-20 bg-white border-b border-[#E2E8F0]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
-          <h2 className="text-2xl sm:text-3xl font-display font-semibold text-registrar-ink tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-3xl font-display font-semibold text-[#1E293B] tracking-[-0.75px] mb-4">
             Answers to high-stakes questions from students and parents.
           </h2>
-          <p className="text-base text-registrar-ink-muted leading-relaxed font-sans">
+          <p className="text-base text-[#475569] leading-[162.5%] font-sans">
             Overseas higher education is a life-changing investment. Here are direct, candid answers about admissions feasibility, embassy procedures, and financial safety.
           </p>
         </div>
 
         {/* FAQ Accordion List */}
-        <div className="divide-y divide-registrar-ink-border border-y border-registrar-ink-border">
+        <div className="divide-y divide-[#E2E8F0] border-y border-[#E2E8F0]">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
@@ -59,19 +59,19 @@ export const FaqSection: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => toggleFaq(index)}
-                  className="w-full flex items-start justify-between text-left gap-4 group focus-visible:ring-2 focus-visible:ring-registrar-blue rounded p-1"
+                  className="w-full flex items-start justify-between text-left gap-4 group focus-visible:ring-2 focus-visible:ring-[#1A56DB] rounded p-1"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-semibold text-base text-registrar-ink group-hover:text-registrar-blue transition-colors">
+                  <span className={`font-semibold text-base font-sans transition-colors ${isOpen ? 'text-[#1E293B]' : 'text-[#1E293B] group-hover:text-[#1A56DB]'}`}>
                     {faq.question}
                   </span>
-                  <span className="shrink-0 p-1 rounded bg-registrar-cream text-registrar-ink-muted group-hover:text-registrar-blue transition-colors mt-0.5">
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180 text-registrar-blue' : ''}`} />
+                  <span className="shrink-0 p-1 rounded bg-[#FBF9F5] text-[#475569] group-hover:text-[#1A56DB] transition-colors mt-0.5">
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#1A56DB]' : ''}`} />
                   </span>
                 </button>
 
                 {isOpen && (
-                  <div className="mt-3 text-sm text-registrar-ink-muted leading-relaxed pr-6 pl-1 font-sans">
+                  <div className="mt-3 text-sm text-[#475569] leading-[162.5%] pr-6 pl-1 font-sans">
                     {faq.answer}
                   </div>
                 )}
