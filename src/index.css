@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #1A56DB;
+    --color-forest: #0D5332;
+    --color-cream: #FBF9F5;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    background-color: #FBF9F5;
+    color: #1E293B;
+    caret-color: #1A56DB;
+    min-height: 100vh;
+  }
+
+  /* Custom scrollbar matching registrar aesthetic */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #F1ECE1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+  }
+
+  /* Accessible, themed focus rings */
+  :focus-visible {
+    outline: 2px solid #1A56DB;
+    outline-offset: 2px;
+  }
+
+  /* Tabular numbers for financial and ranking statistics */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Subtle guilloche / security document pattern */
+.bg-dossier-grid {
+  background-image: radial-gradient(#CBD5E1 0.75px, transparent 0.75px), radial-gradient(#CBD5E1 0.75px, #FBF9F5 0.75px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+.bg-dossier-ruled {
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 31px, #E2E8F0 31px, #E2E8F0 32px);
+}

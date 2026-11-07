@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "paper": {
+      "type": "stdio",
+      "command": "C:/Users/sysadmin-onoda/.paper/bin/paper",
+      "args": [
+        "mcp"
+      ]
+    },
+    "paper-http": {
+      "type": "http",
+      "url": "http://localhost:29979/mcp"
+    }
+  }
+}
