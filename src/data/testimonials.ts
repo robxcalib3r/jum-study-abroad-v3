@@ -1,3 +1,5 @@
+import { getAssetUrl } from '../utils/assets';
+
 export interface Testimonial {
   id: string;
   name: string;
@@ -94,7 +96,7 @@ export const testimonialsData: Testimonial[] = [
     dossierNumber: 'JSA-TR-2024',
     statusBadge: 'Community Elder & Parent',
     cardVariant: 'amber',
-    avatarUrl: '/images/avatar-ananta.png'
+    avatarUrl: getAssetUrl('/images/avatar-ananta.png')
   },
   {
     id: 'binoy-chakma',
@@ -110,7 +112,7 @@ export const testimonialsData: Testimonial[] = [
     dossierNumber: 'JSA-FR-2024-084',
     statusBadge: 'France • €243/yr Partial Exemption',
     cardVariant: 'blue',
-    avatarUrl: '/images/avatar-binoy.png'
+    avatarUrl: getAssetUrl('/images/avatar-binoy.png')
   },
   {
     id: 'shima-marma',
@@ -126,6 +128,6 @@ export const testimonialsData: Testimonial[] = [
     dossierNumber: 'JSA-HU-2024-019',
     statusBadge: 'Hungary • 100% Free + Stipend',
     cardVariant: 'green',
-    avatarUrl: '/images/avatar-shima.png'
+    avatarUrl: getAssetUrl('/images/avatar-shima.png')
   }
 ];

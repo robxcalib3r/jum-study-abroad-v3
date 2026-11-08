@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, Clock, CheckCircle2, Users, FileText } from 'lucide-react';
 import { heroDossiersData, HeroDossier } from '../data/testimonials';
+import { getAssetUrl } from '../utils/assets';
 
 interface HeroProps {
   onOpenEvaluation: () => void;
@@ -15,7 +16,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
   return (
     <section 
       className="relative items-center flex flex-col w-full pt-24 pb-24 sm:pt-28 sm:pb-32 lg:pt-36 lg:pb-48 bg-cover bg-center border-b border-[#E2E8F0]"
-      style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
+      style={{ backgroundImage: `url(${getAssetUrl('/images/hero-bg.jpg')})` }}
     >
       {/* Background tint overlay - crisp, unblurred, keeping hero-bg visible */}
       <div className="absolute inset-0 pointer-events-none"></div>

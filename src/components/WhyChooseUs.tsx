@@ -1,11 +1,12 @@
 import React from 'react';
 import { ArrowRight, GraduationCap, ShieldCheck, Banknote, BookOpen } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 export const WhyChooseUs: React.FC = () => {
   const articles = [
     {
       id: 1,
-      image: '/images/article-major.png',
+      image: getAssetUrl('/images/article-major.png'),
       tag: 'Admissions Intelligence',
       date: 'Autumn 2026',
       title: 'Campus France & Études en France: Step-by-Step Procedure for Bangladeshi Applicants',
@@ -13,7 +14,7 @@ export const WhyChooseUs: React.FC = () => {
     },
     {
       id: 2,
-      image: '/images/article-scholarship.png',
+      image: getAssetUrl('/images/article-scholarship.png'),
       tag: 'Scholarships & Grants',
       date: 'Autumn 2026',
       title: 'Stipendium Hungaricum: Crafting a Competitive Motivation Letter from Bangladesh',
@@ -21,7 +22,7 @@ export const WhyChooseUs: React.FC = () => {
     },
     {
       id: 3,
-      image: '/images/article-visa.png',
+      image: getAssetUrl('/images/article-visa.png'),
       tag: 'Visa Protocols',
       date: 'Autumn 2026',
       title: 'German Blocked Account (Sperrkonto & Fintiba): Verification Without Agency Middlemen',
