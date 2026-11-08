@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, ArrowLeft, RotateCcw, ShieldCheck, Sparkles, Building, GraduationCap, DollarSign, Award } from 'lucide-react';
+import { ArrowRight, ArrowLeft, RotateCcw, Building2, TrendingUp, GraduationCap, Award, CheckCircle2, MessageSquare } from 'lucide-react';
 
 interface EligibilityWizardProps {
   initialCountry?: string;
@@ -8,170 +8,182 @@ interface EligibilityWizardProps {
 export const EligibilityWizard: React.FC<EligibilityWizardProps> = ({ initialCountry }) => {
   const [step, setStep] = useState(1);
   const [degree, setDegree] = useState<'bachelors' | 'masters' | 'phd'>('masters');
-  const [field, setField] = useState('stem');
-  const [gpa, setGpa] = useState('3.2-3.6');
-  const [englishStatus, setEnglishStatus] = useState('ielts-6-5');
-  const [targetCountry, setTargetCountry] = useState(initialCountry || 'france');
-  const [studentName, setStudentName] = useState('');
-  const [studentContact, setStudentContact] = useState('');
+  const [field, setField] = useState('Computer Science & Engineering');
+  const [gpa, setGpa] = useState('3.2 – 3.6 / High Division');
+  const [englishStatus, setEnglishStatus] = useState('IELTS 6.5+');
+  const [targetCountry, setTargetCountry] = useState(initialCountry || 'Germany');
 
-  // Calculate tailored recommendations
-  const getMatches = () => {
-    if (degree === 'masters' && (englishStatus === 'ielts-6-5' || englishStatus === 'ielts-7-plus')) {
+  // Recommendation engine based on inputs
+  const getRecommendation = () => {
+    if (degree === 'masters' && (englishStatus === 'IELTS 6.5+' || englishStatus === 'IELTS 6.0')) {
       return {
-        topTrack: 'Germany & France Public University Track',
-        feasibility: 'High Feasibility (92% Match)',
-        recommendedInstitutions: ['University of Rennes (France)', 'TU Freiburg / RWTH Aachen (Germany)', 'University of Strasbourg'],
-        tuitionSummary: '€0 to €243 per year (Subsidized public education)',
-        visaReadiness: 'Standard 4-6 week blocked account & embassy prep'
+        trackTitle: 'Germany State & France Public University Track',
+        feasibilityRate: '94% High Feasibility',
+        institutions: [
+          'TU Munich / RWTH Aachen (Germany — €0 tuition)',
+          'University of Rennes (France — €243/yr)',
+          'Université de Bourgogne (France — €170/yr)'
+        ],
+        tuitionSummary: '€0 to €243 per academic year (100% public state funded)',
+        visaSummary: 'Sperrkonto or direct family sponsor affidavit. 1-on-1 embassy mock prep.'
       };
-    } else if (degree === 'bachelors' || englishStatus === 'moi') {
+    } else if (degree === 'bachelors' || englishStatus.includes('MOI')) {
       return {
-        topTrack: 'Hungary (Stipendium) & Poland English Track',
-        feasibility: 'Strong Feasibility (88% Match)',
-        recommendedInstitutions: ['ELTE Budapest (Hungary)', 'Wrocław University of Science (Poland)', 'University of Debrecen'],
-        tuitionSummary: 'Full scholarship eligible or €1,800–€2,500/yr',
-        visaReadiness: 'Direct bank statement or scholarship award letter'
+        trackTitle: 'Hungary Stipendium & Poland Low-Cost Track',
+        feasibilityRate: '89% Strong Feasibility',
+        institutions: [
+          'Eötvös Loránd University - ELTE (Hungary — 100% Scholarship)',
+          'University of Debrecen (Hungary)',
+          'Wrocław University of Science & Technology (Poland)'
+        ],
+        tuitionSummary: 'Full government scholarship or low tuition (€1,800 – €2,500/yr)',
+        visaSummary: 'Direct university admission confirmation + bank balance letter.'
       };
     } else {
       return {
-        topTrack: 'European Foundation & Direct Campus France Track',
-        feasibility: 'Moderate Feasibility (requires 1-on-1 interview drill)',
-        recommendedInstitutions: ['Campus France Partner Universities', 'University of Warsaw', 'University of Bucharest'],
-        tuitionSummary: 'Low-cost public framework (€1,500–€3,000/yr)',
-        visaReadiness: 'Embassy interview coaching mandatory'
+        trackTitle: 'Finland Public & European Foundation Track',
+        feasibilityRate: '86% Moderate Feasibility',
+        institutions: [
+          'University of Helsinki (Finland — Tuition waiver eligible)',
+          'University of Strasbourg (France)',
+          'University of Bucharest (Romania)'
+        ],
+        tuitionSummary: 'Subsidized European state rates or fee waiver options',
+        visaSummary: 'Standard European student residence permit procedure.'
       };
     }
   };
 
-  const matches = getMatches();
+  const rec = getRecommendation();
 
-  const handleReset = () => {
-    setStep(1);
-    setStudentName('');
-    setStudentContact('');
-  };
-
-  const generateWhatsAppMessage = () => {
-    const text = `Hello Jum Study Abroad! I just completed the Free Profile Evaluation on your website.%0A%0A*Profile Summary:*%0A- Degree: ${degree.toUpperCase()}%0A- Field: ${field.toUpperCase()}%0A- GPA: ${gpa}%0A- English: ${englishStatus}%0A- Target: ${targetCountry}%0A- Name: ${studentName || 'Prospective Applicant'}%0A- Phone/Email: ${studentContact || 'Not provided'}%0A%0A*Calculated Recommendation:* ${matches.topTrack}%0A%0AI would like to verify my eligibility with an advisor.`;
+  const generateWhatsAppUrl = () => {
+    const text = `Hello Jum Study Abroad! I completed the Free University Eligibility Evaluation on your website.%0A%0A*Student Profile:*%0A- Degree: ${degree.toUpperCase()}%0A- Field: ${field}%0A- GPA: ${gpa}%0A- English: ${englishStatus}%0A- Target Country: ${targetCountry}%0A%0A*Result:* ${rec.trackTitle} (${rec.feasibilityRate})%0A%0AI would like to schedule a free 1-on-1 advisor review.`;
     return `https://wa.me/880199999789?text=${text}`;
   };
 
   return (
-    <section id="evaluator" className="py-24 bg-dossier-grid border-b border-[#E2E8F0]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section 
+      id="eligibility" 
+      className="py-20 bg-dossier-grid border-b border-[#E2E8F0]"
+    >
+      <div className="max-w-4xl px-4 sm:px-6 lg:px-8 mx-auto">
         
         {/* Section Header */}
         <div className="mb-10 max-w-2xl text-center mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-display font-semibold text-[#1E293B] tracking-[-0.75px] mb-3">
+          <div className="items-center inline-flex w-fit py-1.25 px-3 rounded-full gap-2 bg-[#EFF6FF] border border-[#DBEAFE] mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1A56DB]" />
+            <span className="tracking-[0.8px] uppercase font-mono font-semibold text-[#1A56DB] text-[11px]">
+              Registrar Profile Evaluation
+            </span>
+          </div>
+          
+          <h2 className="tracking-[-0.75px] mb-3 text-center font-display font-semibold text-[#1E293B] text-2xl sm:text-3xl leading-snug">
             Free European University Eligibility Checker.
           </h2>
-          <p className="text-sm sm:text-base text-[#475569] leading-relaxed font-sans">
+          <p className="text-center font-sans text-[#475569] text-base leading-relaxed">
             Find out which tuition-free and low-cost European public universities match your academic background, test scores, and budget in under 2 minutes. No credit card, no forced signup.
           </p>
         </div>
 
-        {/* Wizard Card Container */}
-        <div className="bg-white rounded-xl border border-[#CBD5E1] shadow-[0_1px_3px_rgba(15,23,42,0.08),0_8px_24px_-4px_rgba(15,23,42,0.06)] overflow-hidden">
+        {/* Wizard Main Card */}
+        <div className="rounded-xl overflow-hidden shadow-[0_1px_3px_rgba(15,23,42,0.08),0_8px_24px_-4px_rgba(15,23,42,0.06)] bg-white border border-[#CBD5E1]">
           
-          {/* Progress Bar Header */}
-          <div className="bg-[#F5F0E6] border-b border-[#E2E8F0] px-6 py-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-xs font-semibold text-[#1A56DB] uppercase tracking-[0.6px]">
+          {/* Step Progress Top Bar */}
+          <div className="items-center flex justify-between py-4 px-6 bg-[#F5F0E6] border-b border-[#E2E8F0]">
+            <div className="items-center flex gap-3">
+              <span className="tracking-[0.6px] uppercase font-mono font-semibold text-[#1A56DB] text-xs">
                 Step {step} of 3
               </span>
-              <span className="text-xs text-[#475569] font-sans">
-                {step === 1 && '• Target Degree & Field'}
-                {step === 2 && '• Academic & Language Profile'}
-                {step === 3 && '• Verified Results & Recommendations'}
+              <span className="font-sans text-[#475569] text-xs">
+                • {step === 1 ? 'Target Degree & Field' : step === 2 ? 'Academic & Language Profile' : 'Admission Feasibility & Recommendations'}
               </span>
             </div>
             
-            <div className="flex items-center gap-1.5">
-              {[1, 2, 3].map((s) => (
-                <div
-                  key={s}
-                  className={`w-6 h-1.5 rounded-full transition-colors ${
-                    step >= s ? 'bg-[#1A56DB]' : 'bg-[#E2E8F0]'
-                  }`}
-                />
-              ))}
+            {/* Step Indicators */}
+            <div className="items-center flex gap-1.5">
+              <div className={`h-1.5 w-6 rounded-full shrink-0 transition-colors ${step >= 1 ? 'bg-[#1A56DB]' : 'bg-[#E2E8F0]'}`} />
+              <div className={`h-1.5 w-6 rounded-full shrink-0 transition-colors ${step >= 2 ? 'bg-[#1A56DB]' : 'bg-[#E2E8F0]'}`} />
+              <div className={`h-1.5 w-6 rounded-full shrink-0 transition-colors ${step === 3 ? 'bg-[#1A56DB]' : 'bg-[#E2E8F0]'}`} />
             </div>
           </div>
 
-          {/* Wizard Body */}
           <div className="p-6 sm:p-8">
-            
             {/* STEP 1 */}
             {step === 1 && (
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold text-[#1E293B] mb-2 font-sans">
+                  <label className="block mb-2 font-sans font-semibold text-[#1E293B] text-sm">
                     1. What level of degree are you applying for?
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {[
-                      { id: 'bachelors', label: "Bachelor's Degree", sub: 'After HSC / A-Levels' },
-                      { id: 'masters', label: "Master's Degree", sub: 'After Bachelor’s' },
-                      { id: 'phd', label: 'PhD / Research', sub: 'After Master’s' },
-                    ].map((item) => (
+                      { id: 'bachelors', title: "Bachelor's Degree", sub: 'After HSC / A-Levels' },
+                      { id: 'masters', title: "Master's Degree", sub: 'After Bachelor’s' },
+                      { id: 'phd', title: 'PhD / Research', sub: 'After Master’s' },
+                    ].map((opt) => (
                       <button
-                        key={item.id}
+                        key={opt.id}
                         type="button"
-                        onClick={() => setDegree(item.id as any)}
-                        className={`p-4 rounded-lg border text-left transition-all font-sans ${
-                          degree === item.id
-                            ? 'border-[#1A56DB] bg-[#F0F5FF] text-[#1A56DB] font-semibold ring-1 ring-[#1A56DB]'
-                            : 'border-[#E2E8F0] bg-white text-[#1E293B] hover:bg-[#FBF9F5]'
+                        onClick={() => setDegree(opt.id as any)}
+                        className={`text-left p-4 rounded-lg border transition-all cursor-pointer ${
+                          degree === opt.id
+                            ? 'bg-[#F0F5FF] border-[#1A56DB] shadow-[0_0_0_1px_#1A56DB]'
+                            : 'bg-white border-[#E2E8F0] hover:border-slate-400'
                         }`}
                       >
-                        <span className="block text-sm">{item.label}</span>
-                        <span className="block text-[11px] text-[#475569] mt-0.5">{item.sub}</span>
+                        <div className={`font-sans text-sm ${degree === opt.id ? 'font-semibold text-[#1A56DB]' : 'text-[#1E293B]'}`}>
+                          {opt.title}
+                        </div>
+                        <div className="text-[11px] mt-0.5 leading-tight font-sans text-[#475569]">
+                          {opt.sub}
+                        </div>
                       </button>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-[#1E293B] mb-2 font-sans">
+                  <label className="block mb-2 font-sans font-semibold text-[#1E293B] text-sm">
                     2. Select your broad field of academic interest:
                   </label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                     {[
-                      { id: 'stem', label: 'Computer Science & Engineering', icon: Building },
-                      { id: 'business', label: 'Business & Management', icon: DollarSign },
-                      { id: 'social', label: 'Humanities & Social Sciences', icon: GraduationCap },
-                      { id: 'health', label: 'Life Sciences & Public Health', icon: Award },
-                    ].map((item) => {
-                      const Icon = item.icon;
-                      const isSelected = field === item.id;
+                      { id: 'Computer Science & Engineering', icon: Building2 },
+                      { id: 'Business & Management', icon: TrendingUp },
+                      { id: 'Humanities & Social Sciences', icon: GraduationCap },
+                      { id: 'Life Sciences & Public Health', icon: Award },
+                    ].map((fld) => {
+                      const Icon = fld.icon;
+                      const isSelected = field === fld.id;
                       return (
                         <button
-                          key={item.id}
+                          key={fld.id}
                           type="button"
-                          onClick={() => setField(item.id)}
-                          className={`h-24 flex flex-col justify-between p-3.5 rounded-lg border text-left transition-all ${
+                          onClick={() => setField(fld.id)}
+                          className={`text-left p-3.5 rounded-lg border transition-all cursor-pointer flex flex-col justify-between h-24 ${
                             isSelected
-                              ? 'border-[#1A56DB] bg-[#F0F5FF] text-[#1A56DB] font-semibold ring-1 ring-[#1A56DB]'
-                              : 'border-[#E2E8F0] bg-white text-[#1E293B] hover:bg-[#FBF9F5]'
+                              ? 'bg-[#F0F5FF] border-[#1A56DB] shadow-[0_0_0_1px_#1A56DB]'
+                              : 'bg-white border-[#E2E8F0] hover:border-slate-400'
                           }`}
                         >
-                          <Icon className={`w-4 h-4 shrink-0 mb-2 ${isSelected ? 'text-[#1A56DB]' : 'text-[#1A56DB]'}`} />
-                          <span className="text-[12px] leading-[137.5%]">{item.label}</span>
+                          <Icon className={`w-5 h-5 mb-2 ${isSelected ? 'text-[#1A56DB]' : 'text-[#64748B]'}`} />
+                          <span className={`text-xs font-sans leading-tight ${isSelected ? 'font-semibold text-[#1A56DB]' : 'text-[#1E293B]'}`}>
+                            {fld.id}
+                          </span>
                         </button>
                       );
                     })}
                   </div>
                 </div>
 
-                <div className="flex justify-end pt-4">
+                <div className="flex justify-end pt-4 border-t border-[#E2E8F0]">
                   <button
                     type="button"
                     onClick={() => setStep(2)}
-                    className="inline-flex items-center justify-center py-2.5 px-5 rounded-lg bg-[#1A56DB] text-white font-semibold text-sm hover:bg-[#1344AF] transition-all shadow-sm"
+                    className="items-center inline-flex justify-center py-2.5 px-5 rounded-lg bg-[#1A56DB] hover:bg-[#1546B0] text-white font-sans font-semibold text-sm cursor-pointer shadow-xs transition-all"
                   >
-                    Next: Academic &amp; Language Profile
-                    <ArrowRight className="w-4 h-4 ml-1.5 shrink-0" />
+                    <span>Next: Academic &amp; Language Profile</span>
+                    <ArrowRight className="w-4 h-4 ml-1.5" />
                   </button>
                 </div>
               </div>
@@ -181,217 +193,182 @@ export const EligibilityWizard: React.FC<EligibilityWizardProps> = ({ initialCou
             {step === 2 && (
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold text-[#1E293B] mb-2 font-sans">
-                    3. What is your approximate CGPA or Academic Grade?
+                  <label className="block mb-2 font-sans font-semibold text-[#1E293B] text-sm">
+                    3. Your current or anticipated GPA / Academic standing:
                   </label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {[
-                      { id: '3.6-4.0', label: '3.60 – 4.00', sub: 'First Class / Distinction' },
-                      { id: '3.2-3.6', label: '3.20 – 3.59', sub: 'Strong High-Second' },
-                      { id: '2.8-3.2', label: '2.80 – 3.19', sub: 'Standard Pass' },
-                      { id: 'under-2.8', label: 'Below 2.80', sub: 'Foundation Pathway' },
-                    ].map((item) => (
+                      'CGPA 3.5 – 4.0 / First Class',
+                      'CGPA 3.0 – 3.49 / High Second',
+                      'CGPA 2.5 – 2.99 / Second Division'
+                    ].map((score) => (
                       <button
-                        key={item.id}
+                        key={score}
                         type="button"
-                        onClick={() => setGpa(item.id)}
-                        className={`p-3.5 rounded-lg border text-left transition-all font-sans ${
-                          gpa === item.id
-                            ? 'border-[#1A56DB] bg-[#F0F5FF] text-[#1A56DB] font-semibold ring-1 ring-[#1A56DB]'
-                            : 'border-[#E2E8F0] bg-white text-[#1E293B] hover:bg-[#FBF9F5]'
+                        onClick={() => setGpa(score)}
+                        className={`text-left p-3.5 rounded-lg border transition-all cursor-pointer ${
+                          gpa === score
+                            ? 'bg-[#F0F5FF] border-[#1A56DB] shadow-[0_0_0_1px_#1A56DB]'
+                            : 'bg-white border-[#E2E8F0] hover:border-slate-400'
                         }`}
                       >
-                        <span className="block text-sm font-mono font-semibold">{item.label}</span>
-                        <span className="block text-[11px] text-[#475569] mt-0.5">{item.sub}</span>
+                        <span className={`text-xs sm:text-sm font-sans ${gpa === score ? 'font-semibold text-[#1A56DB]' : 'text-[#1E293B]'}`}>
+                          {score}
+                        </span>
                       </button>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-[#1E293B] mb-2 font-sans">
-                    4. What is your English Language Proficiency status?
+                  <label className="block mb-2 font-sans font-semibold text-[#1E293B] text-sm">
+                    4. English Language Proficiency Status:
                   </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                     {[
-                      { id: 'ielts-7-plus', label: 'IELTS 7.0+', sub: 'Direct Top Tier' },
-                      { id: 'ielts-6-5', label: 'IELTS 6.5', sub: 'Eligible for 95% of programs' },
-                      { id: 'moi', label: 'English MOI Certificate', sub: 'Accepted in Poland & Hungary' },
-                      { id: 'planning', label: 'Planning to Take Exam', sub: 'Conditional evaluation' },
-                    ].map((item) => (
+                      'IELTS 6.5+',
+                      'IELTS 6.0',
+                      'English MOI (Certificate)',
+                      'No test yet (Need advice)'
+                    ].map((lang) => (
                       <button
-                        key={item.id}
+                        key={lang}
                         type="button"
-                        onClick={() => setEnglishStatus(item.id)}
-                        className={`p-3.5 rounded-lg border text-left transition-all font-sans ${
-                          englishStatus === item.id
-                            ? 'border-[#1A56DB] bg-[#F0F5FF] text-[#1A56DB] font-semibold ring-1 ring-[#1A56DB]'
-                            : 'border-[#E2E8F0] bg-white text-[#1E293B] hover:bg-[#FBF9F5]'
+                        onClick={() => setEnglishStatus(lang)}
+                        className={`text-left p-3 rounded-lg border transition-all cursor-pointer ${
+                          englishStatus === lang
+                            ? 'bg-[#F0F5FF] border-[#1A56DB] shadow-[0_0_0_1px_#1A56DB]'
+                            : 'bg-white border-[#E2E8F0] hover:border-slate-400'
                         }`}
                       >
-                        <span className="block text-sm font-semibold">{item.label}</span>
-                        <span className="block text-[11px] text-[#475569] mt-0.5">{item.sub}</span>
+                        <span className={`text-xs font-sans ${englishStatus === lang ? 'font-semibold text-[#1A56DB]' : 'text-[#1E293B]'}`}>
+                          {lang}
+                        </span>
                       </button>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-[#1E293B] mb-2 font-sans">
-                    5. Preferred European Destination:
+                  <label className="block mb-2 font-sans font-semibold text-[#1E293B] text-sm">
+                    5. Preferred European Country:
                   </label>
-                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-                    {[
-                      { id: 'france', label: 'France 🇫🇷', sub: 'Low-Tuition' },
-                      { id: 'germany', label: 'Germany 🇩🇪', sub: 'Tuition-Free' },
-                      { id: 'hungary', label: 'Hungary 🇭🇺', sub: 'Scholarship' },
-                      { id: 'poland', label: 'Poland 🇵🇱', sub: 'Low-Cost' },
-                      { id: 'romania', label: 'Romania 🇷🇴', sub: 'Accessible' },
-                    ].map((item) => (
+                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+                    {['Germany 🇩🇪', 'France 🇫🇷', 'Hungary 🇭🇺', 'Finland 🇫🇮', 'Open to Any 🇪🇺'].map((c) => (
                       <button
-                        key={item.id}
+                        key={c}
                         type="button"
-                        onClick={() => setTargetCountry(item.id)}
-                        className={`p-3 rounded-lg border text-left transition-all font-sans ${
-                          targetCountry === item.id
-                            ? 'border-[#1A56DB] bg-[#F0F5FF] text-[#1A56DB] font-semibold ring-1 ring-[#1A56DB]'
-                            : 'border-[#E2E8F0] bg-white text-[#1E293B] hover:bg-[#FBF9F5]'
+                        onClick={() => setTargetCountry(c)}
+                        className={`text-center py-2.5 px-2 rounded-lg border text-xs font-sans transition-all cursor-pointer ${
+                          targetCountry === c
+                            ? 'bg-[#1A56DB] text-white border-[#1A56DB] font-semibold'
+                            : 'bg-white text-[#1E293B] border-[#E2E8F0] hover:border-slate-400'
                         }`}
                       >
-                        <span className="block text-sm font-semibold">{item.label}</span>
-                        <span className="block text-[11px] text-[#475569] mt-0.5">{item.sub}</span>
+                        {c}
                       </button>
                     ))}
                   </div>
                 </div>
 
-                <div className="flex justify-between pt-4">
+                <div className="flex justify-between pt-4 border-t border-[#E2E8F0]">
                   <button
                     type="button"
                     onClick={() => setStep(1)}
-                    className="inline-flex items-center justify-center py-2.5 px-4 rounded-lg border border-[#E2E8F0] bg-white text-[#1E293B] text-sm font-medium hover:bg-[#FBF9F5]"
+                    className="items-center inline-flex py-2.5 px-4 rounded-lg bg-white border border-[#CBD5E1] text-[#1E293B] font-sans font-medium text-sm hover:bg-slate-50 cursor-pointer"
                   >
-                    <ArrowLeft className="w-4 h-4 mr-1.5" /> Back
+                    <ArrowLeft className="w-4 h-4 mr-1.5" />
+                    <span>Back</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setStep(3)}
-                    className="inline-flex items-center justify-center py-2.5 px-5 rounded-lg bg-[#1A56DB] text-white font-semibold text-sm hover:bg-[#1344AF] transition-all shadow-sm"
+                    className="items-center inline-flex justify-center py-2.5 px-5 rounded-lg bg-[#1A56DB] hover:bg-[#1546B0] text-white font-sans font-semibold text-sm cursor-pointer shadow-xs transition-all"
                   >
-                    Calculate My University Matches
-                    <ArrowRight className="w-4 h-4 ml-1.5 shrink-0" />
+                    <span>Calculate Feasibility</span>
+                    <ArrowRight className="w-4 h-4 ml-1.5" />
                   </button>
                 </div>
               </div>
             )}
 
-            {/* STEP 3 - RESULTS */}
+            {/* STEP 3 */}
             {step === 3 && (
               <div className="space-y-6">
-                
-                {/* Match Banner */}
-                <div className="p-5 rounded-xl bg-[#EAF7EE66] border border-[#0D533233] flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#0D5332] text-white flex items-center justify-center shrink-0">
-                    <Sparkles className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="font-mono text-xs font-semibold text-[#137343] uppercase tracking-wider block">
-                      Evaluation Calculated
+                <div className="p-5 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0]">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="tracking-[0.6px] uppercase font-mono font-bold text-[#166534] text-xs">
+                      Eligible Pathway Result
                     </span>
-                    <h3 className="text-lg font-semibold text-[#083B23] font-display mt-0.5">
-                      {matches.topTrack}
-                    </h3>
-                    <p className="text-xs text-[#083B23]/80 mt-1 font-sans">
-                      Status: <span className="font-semibold">{matches.feasibility}</span>
-                    </p>
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#DCFCE7] text-[#15803D] font-mono text-xs font-bold border border-[#86EFAC]">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      {rec.feasibilityRate}
+                    </span>
                   </div>
+                  <h3 className="font-display font-semibold text-[#14532D] text-xl">
+                    {rec.trackTitle}
+                  </h3>
                 </div>
 
-                {/* Breakdown Ledger */}
-                <div className="bg-[#FBF9F5] rounded-xl p-5 border border-[#E2E8F0] space-y-4 text-xs font-sans">
-                  <div>
-                    <span className="font-semibold text-[#1E293B] block mb-1">
-                      Matched Public Higher Education Institutions:
+                <div className="space-y-3 font-sans text-sm">
+                  <div className="p-3.5 rounded-lg bg-[#FBF9F5] border border-[#E2E8F0]">
+                    <span className="block font-semibold text-[#1E293B] mb-1.5 text-xs uppercase tracking-wider font-mono">
+                      Recommended Universities &amp; Degrees
                     </span>
-                    <ul className="space-y-1 text-[#475569]">
-                      {matches.recommendedInstitutions.map((inst, idx) => (
-                        <li key={idx} className="flex items-center gap-1.5">
-                          <ShieldCheck className="w-3.5 h-3.5 text-[#0D5332] shrink-0" />
-                          <span className="font-medium text-[#1E293B]">{inst}</span>
-                        </li>
+                    <ul className="space-y-1 text-[#334155] text-xs sm:text-sm list-disc pl-4">
+                      {rec.institutions.map((inst, i) => (
+                        <li key={i}>{inst}</li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="pt-3 border-t border-[#E2E8F0] flex flex-col sm:flex-row justify-between gap-2">
-                    <div>
-                      <span className="text-[#475569] block">Expected Annual University Tuition:</span>
-                      <span className="font-mono font-semibold text-[#137343] text-sm">
-                        {matches.tuitionSummary}
-                      </span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="p-3 rounded-lg bg-white border border-[#E2E8F0]">
+                      <span className="block text-[#64748B] text-[11px] font-mono uppercase">Estimated Tuition</span>
+                      <span className="block font-semibold text-[#083B23] text-xs mt-0.5">{rec.tuitionSummary}</span>
                     </div>
-                    <div>
-                      <span className="text-[#475569] block">Visa / Financial Proof Path:</span>
-                      <span className="font-medium text-[#1E293B]">
-                        {matches.visaReadiness}
-                      </span>
+                    <div className="p-3 rounded-lg bg-white border border-[#E2E8F0]">
+                      <span className="block text-[#64748B] text-[11px] font-mono uppercase">Visa &amp; Bank Proof</span>
+                      <span className="block font-medium text-[#1E293B] text-xs mt-0.5">{rec.visaSummary}</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Optional Contact Input for 1-Click Verification */}
-                <div className="bg-white p-5 rounded-xl border border-[#CBD5E1] space-y-4">
-                  <h4 className="text-sm font-semibold text-[#1E293B] font-sans">
-                    Verify Your Dossier With an Advisor (Zero Obligation)
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                    <div>
-                      <label className="block text-[#475569] mb-1 font-sans">Your Name:</label>
-                      <input 
-                        type="text" 
-                        value={studentName}
-                        onChange={(e) => setStudentName(e.target.value)}
-                        placeholder="e.g. Joy Chakma / Tanvir Ahmed"
-                        className="w-full px-3 py-2 border border-[#E2E8F0] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#1A56DB] text-xs font-sans"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[#475569] mb-1 font-sans">Phone / WhatsApp / Email:</label>
-                      <input 
-                        type="text" 
-                        value={studentContact}
-                        onChange={(e) => setStudentContact(e.target.value)}
-                        placeholder="e.g. 018XXXXXXXX or name@gmail.com"
-                        className="w-full px-3 py-2 border border-[#E2E8F0] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#1A56DB] text-xs font-sans"
-                      />
-                    </div>
+                <div className="p-4 rounded-lg bg-[#EFF6FF] border border-[#DBEAFE] flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="text-center sm:text-left">
+                    <span className="font-sans font-semibold text-[#1E40AF] text-sm block">
+                      Verify Your Profile with an Advisor
+                    </span>
+                    <span className="text-[#3B82F6] text-xs block">
+                      Direct WhatsApp consultation with zero booking charges.
+                    </span>
                   </div>
-
-                  <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                    <a
-                      href={generateWhatsAppMessage()}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center py-2.5 px-4 rounded-lg bg-[#0D5332] text-white font-semibold text-xs hover:bg-[#083B23] transition-all shadow-sm"
-                    >
-                      <ShieldCheck className="w-4 h-4 mr-1.5" />
-                      Send Profile to Verified Advisor on WhatsApp
-                    </a>
-                    <button
-                      type="button"
-                      onClick={handleReset}
-                      className="inline-flex items-center justify-center py-2.5 px-4 rounded-lg border border-[#E2E8F0] bg-white text-[#475569] text-xs font-medium hover:bg-[#FBF9F5]"
-                    >
-                      <RotateCcw className="w-3.5 h-3.5 mr-1.5" />
-                      Start Over
-                    </button>
-                  </div>
+                  <a
+                    href={generateWhatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center py-2.5 px-4 rounded-lg bg-[#1A56DB] hover:bg-[#1546B0] text-white font-sans font-semibold text-xs shadow-xs transition-all shrink-0 cursor-pointer"
+                  >
+                    <MessageSquare className="w-4 h-4 mr-1.5" />
+                    <span>Send Profile to WhatsApp</span>
+                  </a>
                 </div>
 
+                <div className="flex justify-between pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setStep(1)}
+                    className="items-center inline-flex py-2 px-3 rounded-lg bg-white border border-[#CBD5E1] text-[#64748B] hover:text-[#1E293B] font-sans text-xs cursor-pointer"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5 mr-1.5" />
+                    <span>Start Over</span>
+                  </button>
+                </div>
               </div>
             )}
 
           </div>
+
         </div>
 
       </div>

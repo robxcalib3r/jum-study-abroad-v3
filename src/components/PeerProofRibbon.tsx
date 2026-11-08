@@ -1,113 +1,189 @@
 import React from 'react';
+import { Star } from 'lucide-react';
 import { testimonialsData } from '../data/testimonials';
-import { ShieldCheck, MapPin, Calendar } from 'lucide-react';
 
 export const PeerProofRibbon: React.FC = () => {
   return (
-    <section id="alumni" className="py-20 bg-white border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section 
+      id="alumni" 
+      className="items-center flex flex-col w-full pt-20 pb-22 bg-[#FAF8F5] border-y border-[#E2E8F0]"
+    >
+      <div className="flex flex-col max-w-7xl w-full items-center px-4 sm:px-6 lg:px-8 gap-12">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-12">
-          <h2 className="text-2xl sm:text-3xl font-display font-semibold text-[#1E293B] tracking-[-0.75px] mb-4">
-            Direct alumni proof from Bangladesh and the Chittagong Hill Tracts.
+        <div className="items-center flex flex-col max-w-2xl text-center w-full gap-3.5">
+          <div className="items-center inline-flex w-fit py-1.5 px-3.5 rounded-full gap-2 bg-[#EAF7EE] border border-[#0D5332]/25">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0D5332]" />
+            <span className="tracking-[0.6px] uppercase font-mono font-semibold text-[#083B23] text-[11px]">
+              Direct Voices • 100% Authentic Community Proof
+            </span>
+          </div>
+          
+          <h2 className="text-[30px] sm:text-[38px] tracking-[-0.8px] leading-tight text-center font-display font-semibold text-[#0F172A]">
+            What students and families say about Jum Study Abroad
           </h2>
-          <p className="text-base text-[#475569] leading-[162.5%] font-sans">
-            Every case below represents an authentic student or parent who navigated admissions, blocked accounts, and embassy interviews with zero agency markups. Verified against actual university matriculation records.
+          
+          <p className="text-center font-sans text-[#475569] text-base leading-relaxed">
+            Real experiences from Bangladeshi and indigenous Jumma students who navigated admissions, blocked accounts, and embassy interviews with zero agency markups.
           </p>
         </div>
 
-        {/* Alumni Dossier Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {testimonialsData.map((item) => (
-            <article 
-              key={item.id}
-              className="bg-[#FBF9F5] rounded-xl p-6 border border-[#E2E8F0] flex flex-col justify-between shadow-[0_1px_2px_rgba(0,0,0,0.05)] hover:border-[#CBD5E1] transition-all"
-            >
-              <div>
-                {/* Header row: Student identity & verified visa stamp */}
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-[#1E293B] font-display">
-                      {item.name}
-                    </h3>
-                    <p className="text-xs text-[#475569] flex items-center gap-1.5 mt-0.5 font-sans">
-                      <MapPin className="w-3.5 h-3.5 text-[#94A3B8] shrink-0" />
-                      {item.homeRegion} • <span className="font-medium text-[#083B23]">{item.community}</span>
-                    </p>
-                  </div>
-
-                  <div className="text-right shrink-0">
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-sm bg-white border border-[#0D53324D] text-[11px] font-mono text-[#083B23] font-medium leading-[150%]">
-                      <ShieldCheck className="w-3 h-3 text-[#0D5332]" />
-                      Visa Approved
+        {/* 3 Distinct Styled Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-6">
+          
+          {/* Card 1: Amber / Parent Card (Ananta Tripura) */}
+          <div className="flex flex-col justify-between min-w-0 rounded-2xl overflow-hidden bg-white border border-[#FDE68A] shadow-[0_4px_20px_-2px_rgba(217,119,6,0.08)] h-full">
+            <div className="flex flex-col pt-5.5 pb-4.5 gap-3.5 px-5.5 bg-[#FFFDF7] border-b border-[#FEF3C7]">
+              <div className="items-center flex justify-between w-full">
+                <div className="items-center flex gap-3">
+                  <div 
+                    className="shrink-0 rounded-full bg-cover bg-center border-2 border-[#F59E0B] w-11 h-11"
+                    style={{ backgroundImage: `url(${testimonialsData[0].avatarUrl})` }}
+                  />
+                  <div className="flex flex-col">
+                    <span className="font-sans font-bold text-[#0F172A] text-[15px]">
+                      {testimonialsData[0].name}
                     </span>
-                    <span className="block text-[10px] font-mono text-[#94A3B8] mt-1 leading-[150%]">
-                      {item.visaApprovedDate}
+                    <span className="font-sans font-semibold text-[#B45309] text-xs">
+                      {testimonialsData[0].roleOrCommunity}
                     </span>
                   </div>
                 </div>
 
-                {/* Direct Experience Quote */}
-                <p className="text-sm text-[#475569] leading-[162.5%] italic mb-4 font-sans">
-                  "{item.quote}"
-                </p>
-
-                {/* University & Degree Specs */}
-                <div className="bg-white rounded-lg p-3.5 border border-[#E2E8F0CC] space-y-1.5 text-xs font-sans">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[#475569]">University</span>
-                    <span className="font-semibold text-[#1E293B]">
-                      {item.university} {item.countryFlag}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[#475569]">Program</span>
-                    <span className="font-medium text-[#1E293B]">{item.degree}</span>
-                  </div>
-                  <div className="flex items-center justify-between pt-1 border-t border-[#E2E8F080]">
-                    <span className="text-[#475569]">Financial Structure</span>
-                    <span className="font-mono text-[#137343] font-semibold">
-                      {item.scholarshipOrFee}
-                    </span>
-                  </div>
+                <div className="items-center flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
+                  ))}
                 </div>
               </div>
 
-              {/* Dossier Card Footer */}
-              <div className="pt-4 mt-5 border-t border-[#E2E8F0B3] flex items-center justify-between text-xs font-mono text-[#94A3B8]">
-                <span className="flex items-center gap-1">
-                  <Calendar className="w-3.5 h-3.5" />
-                  Intake: {item.intakeYear}
+              <div className="items-center inline-flex w-fit py-1 px-2.5 rounded-md gap-1.5 bg-[#FEF3C7] border border-[#FDE68A]">
+                <span className="tracking-[0.5px] uppercase font-mono font-bold text-[#92400E] text-[10px]">
+                  {testimonialsData[0].statusBadge}
                 </span>
-                <span>Ref: {item.dossierNumber}</span>
               </div>
-            </article>
-          ))}
-        </div>
+            </div>
 
-        {/* Proof metrics row */}
-        <div className="mt-12 bg-[#F5F0E6] rounded-xl p-6 border border-[#E2E8F0] grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-          <div>
-            <span className="block font-mono text-3xl font-bold text-[#1A56DB] mb-1 tabular-nums">97.2%</span>
-            <span className="text-xs text-[#1E293B] font-medium font-sans">Embassy Visa Approval Rate</span>
-            <span className="block text-[11px] text-[#475569] leading-[150%] font-sans">Across 2023–2025 cohorts</span>
+            <div className="flex flex-col grow p-5.5 gap-4">
+              <div className="py-3 px-4 bg-[#FEF3C7]/40 border-l-[3px] border-[#D97706] rounded-r-lg">
+                <p className="font-sans italic text-[#334155] text-[13.5px] leading-relaxed">
+                  "{testimonialsData[0].quote}"
+                </p>
+              </div>
+            </div>
+
+            <div className="items-center flex justify-between py-3 px-5.5 bg-[#FFFDF7] border-t border-[#FEF3C7]">
+              <span className="font-mono text-[#94A3B8] text-[11px]">
+                Dossier: {testimonialsData[0].dossierNumber}
+              </span>
+              <span className="font-sans font-semibold text-[#B45309] text-[11px]">
+                Verified Parent
+              </span>
+            </div>
           </div>
-          <div>
-            <span className="block font-mono text-3xl font-bold text-[#0D5332] mb-1 tabular-nums">1,240+</span>
-            <span className="text-xs text-[#1E293B] font-medium font-sans">Students Successfully Advised</span>
-            <span className="block text-[11px] text-[#475569] leading-[150%] font-sans">Undergraduate &amp; Graduate</span>
+
+          {/* Card 2: Blue / France Scholar Card (Binoy Chakma) */}
+          <div className="flex flex-col justify-between min-w-0 rounded-2xl overflow-hidden bg-white border border-[#BFDBFE] shadow-[0_4px_20px_-2px_rgba(26,86,219,0.08)] h-full">
+            <div className="flex flex-col pt-5.5 pb-4.5 gap-3.5 px-5.5 bg-[#F8FAFF] border-b border-[#DBEAFE]">
+              <div className="items-center flex justify-between w-full">
+                <div className="items-center flex gap-3">
+                  <div 
+                    className="shrink-0 rounded-full bg-cover bg-center border-2 border-[#1A56DB] w-11 h-11"
+                    style={{ backgroundImage: `url(${testimonialsData[1].avatarUrl})` }}
+                  />
+                  <div className="flex flex-col">
+                    <span className="font-sans font-bold text-[#0F172A] text-[15px]">
+                      {testimonialsData[1].name}
+                    </span>
+                    <span className="font-sans font-semibold text-[#1A56DB] text-xs">
+                      {testimonialsData[1].roleOrCommunity}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="items-center flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
+                  ))}
+                </div>
+              </div>
+
+              <div className="items-center inline-flex w-fit py-1 px-2.5 rounded-md gap-1.5 bg-[#EFF6FF] border border-[#BFDBFE]">
+                <span className="tracking-[0.5px] uppercase font-mono font-bold text-[#1E40AF] text-[10px]">
+                  {testimonialsData[1].statusBadge}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col grow p-5.5 gap-4">
+              <div className="py-3 px-4 bg-[#EFF6FF]/40 border-l-[3px] border-[#1A56DB] rounded-r-lg">
+                <p className="font-sans italic text-[#334155] text-[13.5px] leading-relaxed">
+                  "{testimonialsData[1].quote}"
+                </p>
+              </div>
+            </div>
+
+            <div className="items-center flex justify-between py-3 px-5.5 bg-[#F8FAFF] border-t border-[#DBEAFE]">
+              <span className="font-mono text-[#94A3B8] text-[11px]">
+                Dossier: {testimonialsData[1].dossierNumber}
+              </span>
+              <span className="font-sans font-semibold text-[#1A56DB] text-[11px]">
+                Currently in France
+              </span>
+            </div>
           </div>
-          <div>
-            <span className="block font-mono text-3xl font-bold text-[#1A56DB] mb-1 tabular-nums">€0</span>
-            <span className="text-xs text-[#1E293B] font-medium font-sans">Hidden Markups or Secret Cuts</span>
-            <span className="block text-[11px] text-[#475569] leading-[150%] font-sans">Direct institutional billing</span>
+
+          {/* Card 3: Forest Green / Hungary Scholar Card (Shima Marma) */}
+          <div className="flex flex-col justify-between min-w-0 rounded-2xl overflow-hidden bg-white border border-[#BBF7D0] shadow-[0_4px_20px_-2px_rgba(13,83,50,0.08)] h-full">
+            <div className="flex flex-col pt-5.5 pb-4.5 gap-3.5 px-5.5 bg-[#F7FCF8] border-b border-[#DCFCE7]">
+              <div className="items-center flex justify-between w-full">
+                <div className="items-center flex gap-3">
+                  <div 
+                    className="shrink-0 rounded-full bg-cover bg-center border-2 border-[#0D5332] w-11 h-11"
+                    style={{ backgroundImage: `url(${testimonialsData[2].avatarUrl})` }}
+                  />
+                  <div className="flex flex-col">
+                    <span className="font-sans font-bold text-[#0F172A] text-[15px]">
+                      {testimonialsData[2].name}
+                    </span>
+                    <span className="font-sans font-semibold text-[#083B23] text-xs">
+                      {testimonialsData[2].roleOrCommunity}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="items-center flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
+                  ))}
+                </div>
+              </div>
+
+              <div className="items-center inline-flex w-fit py-1 px-2.5 rounded-md gap-1.5 bg-[#EAF7EE] border border-[#BBF7D0]">
+                <span className="tracking-[0.5px] uppercase font-mono font-bold text-[#083B23] text-[10px]">
+                  {testimonialsData[2].statusBadge}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col grow p-5.5 gap-4">
+              <div className="py-3 px-4 bg-[#EAF7EE]/40 border-l-[3px] border-[#0D5332] rounded-r-lg">
+                <p className="font-sans italic text-[#334155] text-[13.5px] leading-relaxed">
+                  "{testimonialsData[2].quote}"
+                </p>
+              </div>
+            </div>
+
+            <div className="items-center flex justify-between py-3 px-5.5 bg-[#F7FCF8] border-t border-[#DCFCE7]">
+              <span className="font-mono text-[#94A3B8] text-[11px]">
+                Dossier: {testimonialsData[2].dossierNumber}
+              </span>
+              <span className="font-sans font-semibold text-[#083B23] text-[11px]">
+                Currently in Hungary
+              </span>
+            </div>
           </div>
-          <div>
-            <span className="block font-mono text-3xl font-bold text-[#D97706] mb-1 tabular-nums">15+</span>
-            <span className="text-xs text-[#1E293B] font-medium font-sans">European Countries Covered</span>
-            <span className="block text-[11px] text-[#475569] leading-[150%] font-sans">Focus on public universities</span>
-          </div>
+
         </div>
 
       </div>

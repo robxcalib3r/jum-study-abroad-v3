@@ -13,19 +13,19 @@ const faqs: FaqItem[] = [
   },
   {
     question: "How do blocked accounts (Sperrkonto) work, and will Jum hold my funds?",
-    answer: "Never. Jum Study Abroad will NEVER touch, deposit, or hold your living expense funds. For Germany, we guide you to open a federally approved, digital blocked account (such as Fintiba, Expatrio, or Coracle) opened directly in your own legal name. You transfer the funds directly from your Bangladeshi bank under an official student file. For France, we guide your family on official bank sponsorship declarations (Attestation de virement irrévocable). No third-party agency accounts are ever involved."
+    answer: "Jum Study Abroad NEVER holds your blocked account funds. For German student visas, blocked accounts must be opened exclusively with official German federal financial regulatory authority (BaFin)-approved escrow providers such as Fintiba, Coracle, or Expatrio in your own legal name. You transfer living expenses directly to your own account, and once you arrive in Germany, the bank releases your monthly allowance directly to you."
   },
   {
     question: "How does Jum Study Abroad specifically empower indigenous Jumma students from the Chittagong Hill Tracts?",
-    answer: "Our founding team and advisory network have deep roots in the Chakma, Marma, and Tripura communities. We understand the specific socio-economic realities, document challenges (tribal certificates, land lease records, guardian tax papers), and anxiety indigenous students face in Dhaka consultancies. We connect every applicant with current enrolled Jumma seniors in France, Germany, and Hungary for authentic peer mentorship, motivation letter reviews, and arrival support."
+    answer: "Founded by Jumma community members who walked this path themselves, JSA provides dedicated mentorship, language training resources, and authentic documentation support for ethnic minority applicants across Rangamati, Bandarban, and Khagrachari, connecting them directly with enrolled senior alumni mentors across Europe."
   },
   {
     question: "What happens during the embassy visa interview, and how do you prepare students?",
-    answer: "Embassy visa interviews (at the German Embassy in Gulshan or the French Embassy / Campus France in Baridhara) fail when students cannot explain why they chose a specific syllabus, how their previous degree links to the new curriculum, or how their financing works. We conduct at least 3 rigorous 1-on-1 mock interviews, dissecting your academic transcript, career trajectory, and financial documents until you can answer every question with composure."
+    answer: "Embassy visa officers evaluate your academic coherence, course module knowledge, and legitimate post-study intentions. We conduct rigorous 1-on-1 mock interviews covering your curriculum, university selection, financial documentation, and career vision so you enter your interview with total confidence."
   },
   {
     question: "What are your consulting fees and what is your refund transparency policy?",
-    answer: "We charge a single, transparent advisory fee broken into milestone deliverables: profile evaluation & university shortlist, application submission, and visa preparation. We do not take hidden cuts from universities or foreign colleges. If an admission cannot be secured due to verified institutional caps, our written advisory contract stipulates exact transparent refund terms. No surprises, no retained passports."
+    answer: "We operate with a written, milestone-based advisory contract and zero hidden commissions. Initial eligibility assessments and course research are 100% free. If an eligible applicant receives no public university offer under our agreed shortlist, our performance guarantee provides milestone fee refunds."
   }
 ];
 
@@ -38,20 +38,28 @@ export const FaqSection: React.FC = () => {
 
   return (
     <section id="faq" className="py-20 bg-white border-b border-[#E2E8F0]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl px-4 sm:px-6 lg:px-8 mx-auto">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-12">
-          <h2 className="text-2xl sm:text-3xl font-display font-semibold text-[#1E293B] tracking-[-0.75px] mb-4">
+        <div className="mb-12 max-w-3xl">
+          <div className="items-center inline-flex w-fit py-1.25 px-3 rounded-full gap-2 bg-[#EFF6FF] border border-[#DBEAFE] mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1A56DB]" />
+            <span className="tracking-[0.8px] uppercase font-mono font-semibold text-[#1A56DB] text-[11px]">
+              Direct Transparency Q&amp;A
+            </span>
+          </div>
+          
+          <h2 className="tracking-[-0.75px] mb-4 font-display font-semibold text-[#1E293B] text-2xl sm:text-3xl leading-snug">
             Answers to high-stakes questions from students and parents.
           </h2>
-          <p className="text-base text-[#475569] leading-[162.5%] font-sans">
+          
+          <p className="font-sans text-[#475569] text-base leading-relaxed">
             Overseas higher education is a life-changing investment. Here are direct, candid answers about admissions feasibility, embassy procedures, and financial safety.
           </p>
         </div>
 
         {/* FAQ Accordion List */}
-        <div className="divide-y divide-[#E2E8F0] border-y border-[#E2E8F0]">
+        <div className="border-y border-[#E2E8F0] divide-y divide-[#E2E8F0]">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
@@ -59,20 +67,27 @@ export const FaqSection: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => toggleFaq(index)}
-                  className="w-full flex items-start justify-between text-left gap-4 group focus-visible:ring-2 focus-visible:ring-[#1A56DB] rounded p-1"
+                  className="items-start flex w-full justify-between p-1 rounded-sm gap-4 cursor-pointer text-left focus-visible:ring-2 focus-visible:ring-[#1A56DB]"
                   aria-expanded={isOpen}
                 >
-                  <span className={`font-semibold text-base font-sans transition-colors ${isOpen ? 'text-[#1E293B]' : 'text-[#1E293B] group-hover:text-[#1A56DB]'}`}>
+                  <span className={`font-sans font-semibold text-base sm:text-[17px] leading-snug transition-colors ${
+                    isOpen ? 'text-[#1A56DB]' : 'text-[#1E293B]'
+                  }`}>
                     {faq.question}
                   </span>
-                  <span className="shrink-0 p-1 rounded bg-[#FBF9F5] text-[#475569] group-hover:text-[#1A56DB] transition-colors mt-0.5">
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#1A56DB]' : ''}`} />
+                  
+                  <span className="shrink-0 mt-0.5 p-1 rounded-sm bg-[#FBF9F5] border border-[#E2E8F0]">
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                      isOpen ? 'rotate-180 text-[#1A56DB]' : 'text-[#475569]'
+                    }`} />
                   </span>
                 </button>
 
                 {isOpen && (
-                  <div className="mt-3 text-sm text-[#475569] leading-[162.5%] pr-6 pl-1 font-sans">
-                    {faq.answer}
+                  <div className="mt-3 pr-6 pl-1 animate-fadeIn">
+                    <p className="font-sans text-[#475569] text-sm sm:text-[15px] leading-relaxed">
+                      {faq.answer}
+                    </p>
                   </div>
                 )}
               </div>

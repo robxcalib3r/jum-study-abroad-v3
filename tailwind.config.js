@@ -48,6 +48,15 @@ export default {
         'dossier': '0 1px 3px rgba(15, 23, 42, 0.08), 0 8px 24px -4px rgba(15, 23, 42, 0.06)',
         'dossier-hover': '0 4px 6px rgba(15, 23, 42, 0.08), 0 16px 32px -4px rgba(15, 23, 42, 0.10)',
         'seal': '0 2px 8px rgba(13, 83, 50, 0.15)'
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(-4px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        }
+      },
+      animation: {
+        fadeIn: 'fadeIn 0.2s ease-out',
       }
     },
   },

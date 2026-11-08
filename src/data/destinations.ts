@@ -1,99 +1,99 @@
 export interface Destination {
   id: string;
+  name: string;
   country: string;
   countryCode: string;
-  flag: string;
-  headline: string;
-  averageTuition: string;
+  city: string;
+  type: string;
+  tuitionStructure: string;
+  accreditation: string;
+  intakeBadge: string;
+  tuitionStatus: 'Tuition-Free' | 'Low-Tuition' | 'Full Scholarship';
+  visaSuccessRate: string;
   livingCostMonthly: string;
   blockedAccountReq: string;
   languageRequirement: string;
-  topPublicUniversities: string[];
-  intakeDeadlines: string;
-  tuitionStatus: 'Tuition-Free' | 'Low-Tuition' | 'Full Scholarship';
-  highlightBadge: string;
-  visaSuccessRate: string;
 }
 
 export const destinationsData: Destination[] = [
   {
-    id: 'france',
+    id: 'rennes-france',
+    name: 'University of Rennes',
     country: 'France',
     countryCode: 'FR',
-    flag: '🇫🇷',
-    headline: 'Low-Tuition Public Universities & CROUS Subsidized Living',
-    averageTuition: '€170 – €243 / year',
-    livingCostMonthly: '€650 – €850 / month',
-    blockedAccountReq: '€7,380 / year (Attestation de virement)',
-    languageRequirement: 'IELTS 6.0+ or English MOI',
-    topPublicUniversities: ['University of Rennes', 'Sorbonne Paris Nord', 'University of Strasbourg', 'Aix-Marseille'],
-    intakeDeadlines: 'Autumn: March 15 (Campus France Études en France)',
+    city: 'Rennes, Brittany',
+    type: 'Public State',
+    tuitionStructure: '€243 / year',
+    accreditation: 'QS Top 250',
+    intakeBadge: 'Autumn 2026 Direct',
     tuitionStatus: 'Low-Tuition',
-    highlightBadge: 'CAF Housing Subsidy up to 40%',
-    visaSuccessRate: '98%'
+    visaSuccessRate: '98%',
+    livingCostMonthly: '€650 – €800 / mo',
+    blockedAccountReq: '€7,380 / yr (Attestation de virement)',
+    languageRequirement: 'IELTS 6.0+ or English MOI'
   },
   {
-    id: 'germany',
-    country: 'Germany',
-    countryCode: 'DE',
-    flag: '🇩🇪',
-    headline: '100% Tuition-Free State Higher Education for International Students',
-    averageTuition: '€0 (Semester fee: €150–€350)',
-    livingCostMonthly: '€850 – €950 / month',
-    blockedAccountReq: '€11,208 / year (Sperrkonto mandatory)',
-    languageRequirement: 'IELTS 6.5+ (STEM courses in English)',
-    topPublicUniversities: ['TU Munich', 'RWTH Aachen', 'University of Freiburg', 'TU Berlin'],
-    intakeDeadlines: 'Winter: July 15 | Summer: Jan 15',
-    tuitionStatus: 'Tuition-Free',
-    highlightBadge: '18-Month Post-Study Job Seeker Visa',
-    visaSuccessRate: '96%'
-  },
-  {
-    id: 'hungary',
+    id: 'elte-hungary',
+    name: 'Eötvös Loránd Univ.',
     country: 'Hungary',
     countryCode: 'HU',
-    flag: '🇭🇺',
-    headline: 'Stipendium Hungaricum Full Scholarship & Modest Living Costs',
-    averageTuition: '€0 with Stipendium (or €2,500/yr private/public)',
-    livingCostMonthly: '€500 – €650 / month',
-    blockedAccountReq: 'Bank balance proof (€6,000 equivalent)',
-    languageRequirement: 'IELTS 5.5+ or Duolingo accepted',
-    topPublicUniversities: ['Eötvös Loránd University (ELTE)', 'University of Debrecen', 'BME Budapest'],
-    intakeDeadlines: 'Scholarship: Jan 15 | Regular: May 31',
+    city: 'Budapest, Hungary',
+    type: 'Stipendium Partner',
+    tuitionStructure: '100% Scholarship',
+    accreditation: '#1 in Hungary',
+    intakeBadge: 'Autumn 2026 Direct',
     tuitionStatus: 'Full Scholarship',
-    highlightBadge: 'Free tuition + Monthly Stipend + Health Insurance',
-    visaSuccessRate: '97%'
+    visaSuccessRate: '97%',
+    livingCostMonthly: '€500 – €650 / mo',
+    blockedAccountReq: 'Bank balance proof (€6,000 equivalent)',
+    languageRequirement: 'IELTS 5.5+ or Duolingo'
   },
   {
-    id: 'poland',
-    country: 'Poland',
-    countryCode: 'PL',
-    flag: '🇵🇱',
-    headline: 'Accessible European Degree with English-Taught Programs',
-    averageTuition: '€1,800 – €3,200 / year',
-    livingCostMonthly: '€450 – €600 / month',
-    blockedAccountReq: 'Sponsorship / Bank guarantee (€8,000)',
-    languageRequirement: 'IELTS 6.0 or Medium of Instruction (MOI)',
-    topPublicUniversities: ['University of Warsaw', 'Jagiellonian University', 'Wrocław University of Science'],
-    intakeDeadlines: 'Autumn: July 30',
+    id: 'bourgogne-france',
+    name: 'Université de Bourgogne',
+    country: 'France',
+    countryCode: 'FR',
+    city: 'Dijon, Burgundy',
+    type: 'Public State',
+    tuitionStructure: '€170 / year',
+    accreditation: 'Top Public Research',
+    intakeBadge: 'Autumn 2026 Direct',
     tuitionStatus: 'Low-Tuition',
-    highlightBadge: 'Fast embassy appointments in Dhaka',
-    visaSuccessRate: '95%'
+    visaSuccessRate: '98%',
+    livingCostMonthly: '€600 – €750 / mo',
+    blockedAccountReq: '€7,380 / yr',
+    languageRequirement: 'IELTS 6.0+ / B2'
   },
   {
-    id: 'romania',
-    country: 'Romania',
-    countryCode: 'RO',
-    flag: '🇷🇴',
-    headline: 'Recognized EU Medical & Engineering Qualifications',
-    averageTuition: '€2,000 – €3,500 / year',
-    livingCostMonthly: '€400 – €550 / month',
-    blockedAccountReq: 'Financial maintenance statement (€5,000)',
-    languageRequirement: 'English interview / MOI certificate',
-    topPublicUniversities: ['University of Bucharest', 'Babeș-Bolyai University', 'Gheorghe Asachi Technical'],
-    intakeDeadlines: 'Autumn: August 15',
-    tuitionStatus: 'Low-Tuition',
-    highlightBadge: 'Direct ministry validation without middlemen',
-    visaSuccessRate: '94%'
+    id: 'tum-germany',
+    name: 'TU Munich (TUM)',
+    country: 'Germany',
+    countryCode: 'DE',
+    city: 'Munich, Bavaria',
+    type: 'TU9 Excellence',
+    tuitionStructure: '€0 / yr (State Public)',
+    accreditation: 'QS World #28',
+    intakeBadge: 'Winter 2026 Direct',
+    tuitionStatus: 'Tuition-Free',
+    visaSuccessRate: '96%',
+    livingCostMonthly: '€850 – €950 / mo',
+    blockedAccountReq: '€11,208 / yr (Sperrkonto mandatory)',
+    languageRequirement: 'IELTS 6.5+ (English Tracks)'
+  },
+  {
+    id: 'helsinki-finland',
+    name: 'University of Helsinki',
+    country: 'Finland',
+    countryCode: 'FI',
+    city: 'Helsinki, Uusimaa',
+    type: 'State Research',
+    tuitionStructure: '100% Waiver Option',
+    accreditation: 'Top 100 Global',
+    intakeBadge: 'Autumn 2026 Direct',
+    tuitionStatus: 'Full Scholarship',
+    visaSuccessRate: '95%',
+    livingCostMonthly: '€800 – €950 / mo',
+    blockedAccountReq: '€6,720 / yr (Bank statement)',
+    languageRequirement: 'IELTS 6.5+'
   }
 ];

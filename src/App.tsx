@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { PeerProofRibbon } from './components/PeerProofRibbon';
-import { AntiscamComparison } from './components/AntiscamComparison';
 import { DestinationsShowcase } from './components/DestinationsShowcase';
+import { WhyChooseUs } from './components/WhyChooseUs';
 import { EligibilityWizard } from './components/EligibilityWizard';
+import { PeerProofRibbon } from './components/PeerProofRibbon';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 
@@ -15,21 +15,21 @@ export const App: React.FC = () => {
     if (countryId) {
       setSelectedCountry(countryId);
     }
-    const element = document.getElementById('evaluator');
+    const element = document.getElementById('eligibility');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="min-h-screen flex flex-col font-sans bg-[#FBF9F5] text-[#1E293B] antialiased selection:bg-blue-100 selection:text-blue-900">
       <Navbar onOpenEvaluation={() => handleOpenEvaluation()} />
       <main className="flex-grow">
         <Hero onOpenEvaluation={() => handleOpenEvaluation()} />
-        <PeerProofRibbon />
-        <AntiscamComparison />
         <DestinationsShowcase onSelectCountryForEvaluation={(countryId) => handleOpenEvaluation(countryId)} />
+        <WhyChooseUs />
         <EligibilityWizard initialCountry={selectedCountry} />
+        <PeerProofRibbon />
         <FaqSection />
       </main>
       <Footer />
