@@ -14,11 +14,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
 
   return (
     <section 
-      className="relative items-center flex flex-col w-full pt-6 pb-24 sm:pt-8 sm:pb-32 lg:pt-10 lg:pb-48 bg-cover bg-center border-b border-[#E2E8F0]"
+      className="relative items-center flex flex-col w-full pt-24 pb-24 sm:pt-28 sm:pb-32 lg:pt-36 lg:pb-48 bg-cover bg-center border-b border-[#E2E8F0]"
       style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
     >
       {/* Background tint overlay - crisp, unblurred, keeping hero-bg visible */}
-      <div className="absolute inset-0 bg-slate-900/15 pointer-events-none"></div>
+      <div className="absolute inset-0 pointer-events-none"></div>
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-950/20 to-transparent pointer-events-none"></div>
 
       <div className="relative grid grid-cols-1 lg:grid-cols-12 max-w-7xl w-full items-start px-4 sm:px-6 lg:px-8 gap-6 lg:gap-8 z-10">
         
