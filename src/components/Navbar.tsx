@@ -17,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEvaluation }) => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#FBF9F5]/95 border-b border-[#E2E8F0]">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#FBF9F5]/48 border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
