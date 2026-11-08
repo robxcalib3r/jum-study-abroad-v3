@@ -43,7 +43,7 @@ export const ClosingConsultation: React.FC<ClosingConsultationProps> = ({ onOpen
           <button
             type="button"
             onClick={onOpenEvaluation}
-            className="w-full sm:w-auto inline-flex items-center justify-center py-3.5 px-6 rounded-lg bg-white hover:bg-slate-50 text-[#1E293B] font-sans font-medium text-base border border-[#CBD5E1] shadow-xs transition-all cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center py-3.5 px-6 rounded-lg bg-white hover:bg-slate-50 active:scale-[0.98] text-[#1E293B] font-sans font-medium text-base border border-[#CBD5E1] shadow-xs transition-all cursor-pointer"
           >
             <span>Complete Free Eligibility Check</span>
             <ArrowRight className="w-4 h-4 ml-2" />

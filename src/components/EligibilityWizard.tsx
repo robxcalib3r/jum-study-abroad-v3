@@ -112,16 +112,16 @@ export const EligibilityWizard: React.FC<EligibilityWizardProps> = ({ initialCou
             
             {/* Step Indicators */}
             <div className="items-center flex gap-1.5">
-              <div className={`h-1.5 w-6 rounded-full shrink-0 transition-colors ${step >= 1 ? 'bg-[#1A56DB]' : 'bg-[#E2E8F0]'}`} />
-              <div className={`h-1.5 w-6 rounded-full shrink-0 transition-colors ${step >= 2 ? 'bg-[#1A56DB]' : 'bg-[#E2E8F0]'}`} />
-              <div className={`h-1.5 w-6 rounded-full shrink-0 transition-colors ${step === 3 ? 'bg-[#1A56DB]' : 'bg-[#E2E8F0]'}`} />
+              <div className={`h-1.5 rounded-full shrink-0 transition-all duration-300 ${step === 1 ? 'w-10 bg-[#1A56DB]' : step > 1 ? 'w-6 bg-[#1A56DB]' : 'w-6 bg-[#E2E8F0]'}`} />
+              <div className={`h-1.5 rounded-full shrink-0 transition-all duration-300 ${step === 2 ? 'w-10 bg-[#1A56DB]' : step > 2 ? 'w-6 bg-[#1A56DB]' : 'w-6 bg-[#E2E8F0]'}`} />
+              <div className={`h-1.5 rounded-full shrink-0 transition-all duration-300 ${step === 3 ? 'w-10 bg-[#1A56DB]' : 'w-6 bg-[#E2E8F0]'}`} />
             </div>
           </div>
 
           <div className="p-6 sm:p-8">
             {/* STEP 1 */}
             {step === 1 && (
-              <div className="space-y-6">
+              <div key={1} className="space-y-6 animate-step-in">
                 <div>
                   <label className="block mb-2 font-sans font-semibold text-[#1E293B] text-sm">
                     1. What level of degree are you applying for?
@@ -202,7 +202,7 @@ export const EligibilityWizard: React.FC<EligibilityWizardProps> = ({ initialCou
 
             {/* STEP 2 */}
             {step === 2 && (
-              <div className="space-y-6">
+              <div key={2} className="space-y-6 animate-step-in">
                 <div>
                   <label className="block mb-2 font-sans font-semibold text-[#1E293B] text-sm">
                     3. Your current or anticipated GPA / Academic standing:
@@ -305,7 +305,7 @@ export const EligibilityWizard: React.FC<EligibilityWizardProps> = ({ initialCou
 
             {/* STEP 3 */}
             {step === 3 && (
-              <div className="space-y-6">
+              <div key={3} className="space-y-6 animate-step-in">
                 <div className="p-5 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0]">
                   <div className="flex items-center justify-between mb-2">
                     <span className="tracking-[0.6px] uppercase font-mono font-bold text-[#166534] text-xs">

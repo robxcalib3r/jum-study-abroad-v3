@@ -140,7 +140,7 @@ export const WhyChooseUs: React.FC = () => {
             {articles.map((art) => (
               <div 
                 key={art.id}
-                className="items-center flex flex-col sm:flex-row p-3 rounded-xl gap-4 bg-[#FBF9F5] border border-[#E2E8F0] shadow-xs hover:shadow-md hover:border-[#CBD5E1] transition-all overflow-hidden"
+                className="items-center flex flex-col sm:flex-row p-3 rounded-xl gap-4 bg-[#FBF9F5] border border-[#E2E8F0] shadow-xs hover:shadow-dossier-hover hover:border-[#CBD5E1] hover:-translate-y-0.5 transition-all duration-200 overflow-hidden"
               >
                 <div 
                   className="shrink-0 h-28 sm:h-24 w-full sm:w-32 rounded-lg bg-cover bg-center border border-[#E2E8F0]"

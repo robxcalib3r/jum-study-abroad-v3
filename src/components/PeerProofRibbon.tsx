@@ -32,7 +32,7 @@ export const PeerProofRibbon: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-6">
           
           {/* Card 1: Amber / Parent Card (Ananta Tripura) */}
-          <div className="flex flex-col justify-between min-w-0 rounded-2xl overflow-hidden bg-white border border-[#FDE68A] shadow-xs h-full">
+          <div className="flex flex-col justify-between min-w-0 rounded-2xl overflow-hidden bg-white border border-[#FDE68A] shadow-xs hover:shadow-dossier-hover hover:-translate-y-0.5 transition-all duration-200 h-full">
             <div className="flex flex-col p-6 gap-3.5 bg-[#FFFDF7] border-b border-[#FEF3C7]">
               <div className="items-center flex justify-between w-full">
                 <div className="items-center flex gap-3">
@@ -83,7 +83,7 @@ export const PeerProofRibbon: React.FC = () => {
           </div>
 
           {/* Card 2: Blue / France Scholar Card (Binoy Chakma) */}
-          <div className="flex flex-col justify-between min-w-0 rounded-2xl overflow-hidden bg-white border border-[#BFDBFE] shadow-xs h-full">
+          <div className="flex flex-col justify-between min-w-0 rounded-2xl overflow-hidden bg-white border border-[#BFDBFE] shadow-xs hover:shadow-dossier-hover hover:-translate-y-0.5 transition-all duration-200 h-full">
             <div className="flex flex-col p-6 gap-3.5 bg-[#F8FAFF] border-b border-[#DBEAFE]">
               <div className="items-center flex justify-between w-full">
                 <div className="items-center flex gap-3">
@@ -134,7 +134,7 @@ export const PeerProofRibbon: React.FC = () => {
           </div>
 
           {/* Card 3: Forest Green / Hungary Scholar Card (Shima Marma) */}
-          <div className="flex flex-col justify-between min-w-0 rounded-2xl overflow-hidden bg-white border border-[#BBF7D0] shadow-xs h-full">
+          <div className="flex flex-col justify-between min-w-0 rounded-2xl overflow-hidden bg-white border border-[#BBF7D0] shadow-xs hover:shadow-dossier-hover hover:-translate-y-0.5 transition-all duration-200 h-full">
             <div className="flex flex-col p-6 gap-3.5 bg-[#F7FCF8] border-b border-[#DCFCE7]">
               <div className="items-center flex justify-between w-full">
                 <div className="items-center flex gap-3">

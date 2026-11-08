@@ -70,26 +70,31 @@ export const FaqSection: React.FC = () => {
                   className="items-start flex w-full justify-between p-1 rounded-sm gap-4 cursor-pointer text-left focus-visible:ring-2 focus-visible:ring-[#1A56DB]"
                   aria-expanded={isOpen}
                 >
-                  <span className={`font-sans font-semibold text-base sm:text-lg leading-snug transition-colors ${
+                  <span className={`font-sans font-semibold text-base sm:text-lg leading-snug transition-colors duration-150 ${
                     isOpen ? 'text-[#1A56DB]' : 'text-[#1E293B]'
                   }`}>
                     {faq.question}
                   </span>
                   
                   <span className="shrink-0 mt-0.5 p-1 rounded-sm bg-[#FBF9F5] border border-[#E2E8F0]">
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-260 ease-out ${
                       isOpen ? 'rotate-180 text-[#1A56DB]' : 'text-[#475569]'
                     }`} />
                   </span>
                 </button>
 
-                {isOpen && (
-                  <div className="mt-3 pr-6 pl-1 animate-fadeIn">
-                    <p className="font-sans text-[#475569] text-sm sm:text-base leading-relaxed">
-                      {faq.answer}
-                    </p>
+                <div 
+                  className={`faq-grid-wrapper ${isOpen ? 'is-open' : ''}`}
+                  aria-hidden={!isOpen}
+                >
+                  <div className="faq-grid-inner">
+                    <div className="mt-2.5 pr-6 pl-1 pb-1">
+                      <p className="font-sans text-[#475569] text-sm sm:text-base leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

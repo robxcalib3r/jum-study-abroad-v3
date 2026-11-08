@@ -65,7 +65,7 @@ export const DestinationsShowcase: React.FC<DestinationsShowcaseProps> = ({ onSe
                     setFilter(tab);
                     setStartIndex(0);
                   }}
-                  className={`px-3 py-1.5 rounded-md text-xs font-sans transition-all cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-md text-xs font-sans transition-all duration-150 cursor-pointer active:scale-95 ${
                     filter === tab
                       ? 'bg-[#1A56DB] text-white font-semibold shadow-xs'
                       : 'text-[#475569] font-medium hover:text-[#1E293B] hover:bg-white/60'
@@ -82,7 +82,7 @@ export const DestinationsShowcase: React.FC<DestinationsShowcaseProps> = ({ onSe
                 onClick={handlePrev}
                 type="button"
                 aria-label="Previous destination" 
-                className="items-center flex justify-center rounded-lg bg-white border border-[#CBD5E1] w-[38px] h-[38px] hover:bg-slate-50 transition shadow-xs cursor-pointer text-[#475569] active:scale-95"
+                className="items-center flex justify-center rounded-lg bg-white border border-[#CBD5E1] w-[38px] h-[38px] hover:bg-slate-50 transition shadow-xs cursor-pointer text-[#475569] active:scale-90"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -90,7 +90,7 @@ export const DestinationsShowcase: React.FC<DestinationsShowcaseProps> = ({ onSe
                 onClick={handleNext}
                 type="button"
                 aria-label="Next destination" 
-                className="items-center flex justify-center rounded-lg bg-[#1A56DB] border border-[#1A56DB] w-[38px] h-[38px] hover:bg-[#1546B0] transition shadow-xs cursor-pointer text-white active:scale-95"
+                className="items-center flex justify-center rounded-lg bg-[#1A56DB] border border-[#1A56DB] w-[38px] h-[38px] hover:bg-[#1546B0] transition shadow-xs cursor-pointer text-white active:scale-90"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -104,7 +104,7 @@ export const DestinationsShowcase: React.FC<DestinationsShowcaseProps> = ({ onSe
             <div 
               key={dest.id}
               onClick={() => onSelectCountryForEvaluation(dest.country.toLowerCase())}
-              className="flex flex-col justify-between p-5 rounded-xl gap-4 bg-white border border-[#E2E8F0] shadow-xs hover:shadow-md hover:border-[#CBD5E1] transition-all cursor-pointer group h-full"
+              className="flex flex-col justify-between p-5 rounded-xl gap-4 bg-white border border-[#E2E8F0] shadow-xs hover:shadow-dossier-hover hover:border-[#CBD5E1] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer group h-full active:scale-[0.99]"
             >
               <div className="flex flex-col gap-3.5">
                 

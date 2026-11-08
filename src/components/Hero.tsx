@@ -57,7 +57,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
             </button>
             <a
               href="#destinations"
-              className="items-center inline-flex justify-center py-2.5 sm:py-3 px-5 sm:px-6 rounded-lg bg-white hover:bg-slate-50 text-[#1E293B] font-sans font-medium text-sm sm:text-base border border-[#CBD5E1] shadow-xs transition-all cursor-pointer"
+              className="items-center inline-flex justify-center py-2.5 sm:py-3 px-5 sm:px-6 rounded-lg bg-white hover:bg-slate-50 active:scale-[0.98] text-[#1E293B] font-sans font-medium text-sm sm:text-base border border-[#CBD5E1] shadow-xs transition-all cursor-pointer"
             >
               <span>Explore Public Universities</span>
             </a>
@@ -139,16 +139,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
                     key={dossier.id}
                     onClick={() => setActiveDossierId(dossier.id)}
                     type="button"
-                    className={`items-center flex flex-col justify-center flex-1 py-1.5 px-2 border-r last:border-r-0 border-[#E2E8F0] transition-colors cursor-pointer ${
+                    className={`items-center flex flex-col justify-center flex-1 py-1.5 px-2 border-r last:border-r-0 border-[#E2E8F0] transition-all duration-150 cursor-pointer active:scale-[0.98] ${
                       isActive 
-                        ? 'bg-white border-b-2 border-b-[#1A56DB]' 
+                        ? 'bg-white border-b-2 border-b-[#1A56DB] shadow-xs' 
                         : 'hover:bg-slate-100/70'
                     }`}
                   >
-                    <span className={`font-sans text-[11px] sm:text-xs ${isActive ? 'font-semibold text-[#1A56DB]' : 'font-medium text-[#64748B]'}`}>
+                    <span className={`font-sans text-[11px] sm:text-xs transition-colors ${isActive ? 'font-semibold text-[#1A56DB]' : 'font-medium text-[#64748B]'}`}>
                       {dossier.tabLabel}
                     </span>
-                    <span className={`font-mono text-[10px] ${isActive ? 'font-semibold text-[#1A56DB]' : 'text-[#94A3B8]'}`}>
+                    <span className={`font-mono text-[10px] transition-colors ${isActive ? 'font-semibold text-[#1A56DB]' : 'text-[#94A3B8]'}`}>
                       {dossier.country}
                     </span>
                   </button>
@@ -156,8 +156,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
               })}
             </div>
 
-            {/* Dossier Body */}
-            <div className="flex flex-col p-4 sm:p-5 gap-3">
+            {/* Dossier Body with registrar paper transition */}
+            <div key={activeDossier.id} className="flex flex-col p-4 sm:p-5 gap-3 animate-dossier-in">
               
               <div className="items-start flex justify-between w-full gap-2">
                 <div className="flex flex-col">

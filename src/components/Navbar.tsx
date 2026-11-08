@@ -88,7 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEvaluation }) => {
 
           {/* Mobile menu dropdown */}
           {mobileMenuOpen && (
-            <div className="lg:hidden border-t border-[#E2E8F0] px-4 pt-3 pb-5 space-y-3 rounded-b-2xl bg-white/95 max-h-[calc(100vh-6rem)] overflow-y-auto">
+            <div className="lg:hidden border-t border-[#E2E8F0] px-4 pt-3 pb-5 space-y-3 rounded-b-2xl bg-white/95 backdrop-blur-md max-h-[calc(100vh-6rem)] overflow-y-auto animate-dropdown">
               <nav className="flex flex-col space-y-2.5 font-sans font-medium text-sm text-[#475569]">
                 {navLinks.map((link) => (
                   <a 

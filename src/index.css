@@ -63,3 +63,109 @@
 .bg-dossier-ruled {
   background-image: repeating-linear-gradient(0deg, transparent, transparent 31px, #E2E8F0 31px, #E2E8F0 32px);
 }
+
+/* ==========================================================================
+   Motion System: The Matriculation Gazette & Registrar Dossier
+   Authored transitions serving state, continuity, and tangible tactile feedback.
+   ========================================================================== */
+
+@keyframes dossierPaperIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wizardStepIn {
+  0% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes menuDropdown {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sealPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(13, 83, 50, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(13, 83, 50, 0);
+  }
+}
+
+.animate-dossier-in {
+  animation: dossierPaperIn 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-step-in {
+  animation: wizardStepIn 260ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-dropdown {
+  animation: menuDropdown 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.seal-pulse {
+  animation: sealPulse 2.8s ease-in-out infinite;
+}
+
+/* Smooth Accordion Unfurling (CSS Grid 0fr -> 1fr avoids height reflows) */
+.faq-grid-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 260ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease;
+  opacity: 0;
+}
+
+.faq-grid-wrapper.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.faq-grid-inner {
+  overflow: hidden;
+}
+
+/* Strict prefers-reduced-motion protection */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-dossier-in,
+  .animate-step-in,
+  .animate-dropdown,
+  .seal-pulse {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .faq-grid-wrapper {
+    transition: none !important;
+  }
+}
+
