@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowLeft, RotateCcw, Building2, TrendingUp, GraduationCap, Award, CheckCircle2, MessageSquare } from 'lucide-react';
 
 interface EligibilityWizardProps {
@@ -11,7 +11,18 @@ export const EligibilityWizard: React.FC<EligibilityWizardProps> = ({ initialCou
   const [field, setField] = useState('Computer Science & Engineering');
   const [gpa, setGpa] = useState('3.2 – 3.6 / High Division');
   const [englishStatus, setEnglishStatus] = useState('IELTS 6.5+');
-  const [targetCountry, setTargetCountry] = useState(initialCountry || 'Germany');
+  const [targetCountry, setTargetCountry] = useState(initialCountry || 'Germany 🇩🇪');
+
+  useEffect(() => {
+    if (initialCountry) {
+      const match = ['Germany 🇩🇪', 'France 🇫🇷', 'Hungary 🇭🇺', 'Finland 🇫🇮'].find(c =>
+        c.toLowerCase().includes(initialCountry.toLowerCase())
+      );
+      if (match) {
+        setTargetCountry(match);
+      }
+    }
+  }, [initialCountry]);
 
   // Recommendation engine based on inputs
   const getRecommendation = () => {

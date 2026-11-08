@@ -45,11 +45,11 @@ export const DestinationsShowcase: React.FC<DestinationsShowcaseProps> = ({ onSe
               </span>
             </div>
             
-            <h2 className="tracking-[-0.8px] font-display font-semibold text-[#1E293B] text-[28px] sm:text-[34px] leading-tight">
+            <h2 className="tracking-tight font-display font-semibold text-[#1E293B] text-2xl sm:text-4xl leading-tight">
               Direct Admissions into Top European Public Universities
             </h2>
             
-            <p className="font-sans text-[#475569] text-[15px] leading-relaxed">
+            <p className="font-sans text-[#475569] text-base leading-relaxed">
               Direct matriculation and tuition-free scholarship pathways into accredited European state institutions across France, Germany, Hungary, and Finland.
             </p>
           </div>
@@ -122,10 +122,10 @@ export const DestinationsShowcase: React.FC<DestinationsShowcaseProps> = ({ onSe
 
                 {/* University Title & Location */}
                 <div className="flex flex-col gap-1 min-h-[56px]">
-                  <h3 className="tracking-[-0.3px] font-display font-semibold text-[#1E293B] text-lg leading-snug group-hover:text-[#1A56DB] transition-colors">
+                  <h3 className="tracking-tight font-display font-semibold text-[#1E293B] text-lg leading-snug group-hover:text-[#1A56DB] transition-colors">
                     {dest.name}
                   </h3>
-                  <span className="font-sans text-[#64748B] text-[13px]">
+                  <span className="font-sans text-[#64748B] text-sm">
                     {dest.city}
                   </span>
                 </div>

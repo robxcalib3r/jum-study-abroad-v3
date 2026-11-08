@@ -18,29 +18,29 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
       style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
     >
       {/* Background tint overlay for readability */}
-      <div className="absolute inset-0 bg-[#FBF9F5]/85 backdrop-blur-[2px]"></div>
+      <div className="absolute inset-0 bg-[#FBF9F5]/90 backdrop-blur-[2px]"></div>
 
       <div className="relative grid grid-cols-1 lg:grid-cols-12 max-w-7xl w-full items-start px-4 sm:px-6 lg:px-8 gap-8 z-10">
         
         {/* Left Manifesto Banner */}
-        <div className="lg:col-span-7 flex flex-col p-6 sm:p-8 rounded-2xl gap-5 backdrop-blur-md bg-white/85 border border-[#E2E8F0]/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.08)]">
+        <div className="lg:col-span-7 flex flex-col p-6 sm:p-8 rounded-2xl gap-5 backdrop-blur-md bg-white/90 border border-[#E2E8F0] shadow-sm">
           
           {/* Intake Open Status Chip */}
-          <div className="items-center inline-flex w-fit py-1.5 px-3 rounded-full gap-2 bg-[#EAF7EE] border border-[#0D533233]">
+          <div className="items-center inline-flex w-fit py-1 px-3 rounded-full gap-2 bg-[#EAF7EE] border border-[#0D5332]/25">
             <span className="w-2 h-2 rounded-full bg-[#0D5332] animate-pulse" />
-            <span className="tracking-[0.5px] uppercase font-mono font-semibold text-[#083B23] text-[11px] leading-tight">
+            <span className="tracking-wider uppercase font-mono font-semibold text-[#083B23] text-xs">
               European Public Admissions • Autumn 2026 Intake Open
             </span>
           </div>
 
           {/* Main Title */}
-          <h1 className="text-[32px] sm:text-[40px] lg:text-[44px] tracking-[-1px] leading-[1.12] font-display font-semibold text-[#0F172A]">
-            Study abroad with Expert Advisory and verified European admissions.
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-[1.15] font-display font-semibold text-[#0F172A]">
+            Study abroad with verified European university admissions.
           </h1>
 
           {/* Subtitle / Value Proposition */}
-          <p className="font-sans text-[#334155] text-base sm:text-[17px] leading-relaxed">
-            We guide Bangladeshi and indigenous Jumma students directly into accredited, tuition-free and low-tuition public universities across France, Germany, Hungary, and Finland. No inflated package fees, no deceptive job promises—only verifiable outcomes and thorough visa interview preparation.
+          <p className="font-sans text-[#334155] text-base sm:text-lg leading-relaxed">
+            We guide Bangladeshi and indigenous Jumma students directly into accredited, tuition-free and low-tuition public universities across France, Germany, Hungary, and Finland. Zero inflated package fees, zero deceptive job promises—only verifiable outcomes and thorough visa interview preparation.
           </p>
 
           {/* Action Buttons */}
@@ -48,14 +48,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
             <button
               onClick={onOpenEvaluation}
               type="button"
-              className="items-center inline-flex justify-center py-3.5 px-5.5 rounded-lg gap-2 bg-[#1A56DB] hover:bg-[#1546B0] text-white font-sans font-semibold text-[15px] shadow-[0_2px_4px_rgba(0,0,0,0.1)] transition-all cursor-pointer active:scale-[0.98]"
+              className="items-center inline-flex justify-center py-3.5 px-6 rounded-lg gap-2 bg-[#1A56DB] hover:bg-[#1546B0] text-white font-sans font-semibold text-base shadow-sm transition-all cursor-pointer active:scale-[0.98]"
             >
               <span>Check Free University Eligibility</span>
               <ArrowRight className="w-4 h-4 shrink-0" />
             </button>
             <a
               href="#destinations"
-              className="items-center inline-flex justify-center py-3.5 px-5.5 rounded-lg bg-white hover:bg-slate-50 text-[#1E293B] font-sans font-medium text-[15px] border border-[#CBD5E1] shadow-xs transition-all cursor-pointer"
+              className="items-center inline-flex justify-center py-3.5 px-6 rounded-lg bg-white hover:bg-slate-50 text-[#1E293B] font-sans font-medium text-base border border-[#CBD5E1] shadow-xs transition-all cursor-pointer"
             >
               <span>Explore Public Universities</span>
             </a>
@@ -68,10 +68,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
                 <Clock className="w-4 h-4" />
               </div>
               <div className="flex flex-col">
-                <span className="font-sans font-semibold text-[#0F172A] text-[13px]">
+                <span className="font-sans font-semibold text-[#0F172A] text-sm">
                   100% Direct Fees
                 </span>
-                <span className="font-sans text-[#1A56DB] text-[11px] font-medium">
+                <span className="font-sans text-[#1A56DB] text-xs font-medium">
                   Pay universities directly
                 </span>
               </div>
@@ -82,11 +82,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
                 <CheckCircle2 className="w-4 h-4" />
               </div>
               <div className="flex flex-col">
-                <span className="font-sans font-semibold text-[#0F172A] text-[13px]">
+                <span className="font-sans font-semibold text-[#0F172A] text-sm">
                   100% Visa Record
                 </span>
-                <span className="font-sans text-[#1A56DB] text-[11px] font-medium">
-                  Inaugural 100% / 97.2% cum.
+                <span className="font-sans text-[#1A56DB] text-xs font-medium">
+                  Inaugural cohort 100%
                 </span>
               </div>
             </div>
@@ -96,10 +96,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
                 <Users className="w-4 h-4" />
               </div>
               <div className="flex flex-col">
-                <span className="font-sans font-semibold text-[#0F172A] text-[13px]">
+                <span className="font-sans font-semibold text-[#0F172A] text-sm">
                   CHT Peer Network
                 </span>
-                <span className="font-sans text-[#1A56DB] text-[11px] font-medium">
+                <span className="font-sans text-[#1A56DB] text-xs font-medium">
                   Senior alumni guidance
                 </span>
               </div>
@@ -110,19 +110,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
 
         {/* Right Dossier Success Card */}
         <div className="lg:col-span-5 flex flex-col w-full">
-          <div className="flex flex-col w-full rounded-xl overflow-hidden shadow-[0_4px_16px_-2px_rgba(15,23,42,0.08)] bg-white border border-[#CBD5E1]">
+          <div className="flex flex-col w-full rounded-xl overflow-hidden shadow-sm bg-white border border-[#CBD5E1]">
             
             {/* Dossier Header */}
             <div className="items-center flex justify-between py-3.5 px-5 bg-[#F5F0E6] border-b border-[#E2E8F0]">
               <div className="items-center flex gap-2">
                 <FileText className="w-4 h-4 text-[#1A56DB] shrink-0" />
-                <span className="tracking-[0.6px] uppercase font-mono font-semibold text-[#1E293B] text-[11px]">
+                <span className="tracking-wider uppercase font-mono font-semibold text-[#1E293B] text-xs">
                   Success Stories
                 </span>
               </div>
               <div className="items-center flex gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#0D5332] animate-pulse" />
-                <span className="tracking-[0.5px] uppercase font-mono font-semibold text-[#083B23] text-[11px]">
+                <span className="tracking-wider uppercase font-mono font-semibold text-[#083B23] text-xs">
                   Enrolled &amp; Verified
                 </span>
               </div>
@@ -146,7 +146,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
                     <span className={`font-sans text-xs ${isActive ? 'font-semibold text-[#1A56DB]' : 'font-medium text-[#64748B]'}`}>
                       {dossier.tabLabel}
                     </span>
-                    <span className={`font-sans text-[10px] ${isActive ? 'font-semibold text-[#1A56DB]' : 'text-[#94A3B8]'}`}>
+                    <span className={`font-mono text-[10px] ${isActive ? 'font-semibold text-[#1A56DB]' : 'text-[#94A3B8]'}`}>
                       {dossier.country}
                     </span>
                   </button>
@@ -167,8 +167,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
                   </span>
                 </div>
                 
-                <div className="items-center flex flex-col py-1 px-2.5 rounded-sm bg-[#EAF7EE] border border-[#0D533233] shrink-0 text-right">
-                  <span className="tracking-[0.5px] uppercase font-mono font-bold text-[#083B23] text-[10px]">
+                <div className="items-center flex flex-col py-1 px-2.5 rounded-md bg-[#EAF7EE] border border-[#0D5332]/25 shrink-0 text-right">
+                  <span className="tracking-wide uppercase font-mono font-bold text-[#083B23] text-[10px]">
                     Visa Issued
                   </span>
                   <span className="font-mono text-[#083B23] text-[10px]">
@@ -178,8 +178,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
               </div>
 
               {/* Student Quote */}
-              <div className="pl-3 border-l-2 border-[#1A56DB]">
-                <p className="font-sans italic text-[#475569] text-[13px] leading-relaxed">
+              <div className="p-3.5 rounded-lg bg-[#EFF6FF]/40 border border-[#DBEAFE]">
+                <p className="font-sans italic text-[#334155] text-xs sm:text-sm leading-relaxed">
                   "{activeDossier.quote}"
                 </p>
               </div>
@@ -202,10 +202,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEvaluation }) => {
 
               {/* Dossier Footer */}
               <div className="items-center flex justify-between pt-2.5 border-t border-dashed border-[#E2E8F0]">
-                <span className="font-mono text-[#94A3B8] text-[11px]">
+                <span className="font-mono text-[#94A3B8] text-xs">
                   Dossier ID: {activeDossier.dossierId}
                 </span>
-                <span className="font-sans font-semibold text-[#1A56DB] text-[11px]">
+                <span className="font-sans font-semibold text-[#1A56DB] text-xs">
                   {activeDossier.matriculationDate}
                 </span>
               </div>

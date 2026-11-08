@@ -6,6 +6,7 @@ import { WhyChooseUs } from './components/WhyChooseUs';
 import { EligibilityWizard } from './components/EligibilityWizard';
 import { PeerProofRibbon } from './components/PeerProofRibbon';
 import { FaqSection } from './components/FaqSection';
+import { ClosingConsultation } from './components/ClosingConsultation';
 import { Footer } from './components/Footer';
 
 export const App: React.FC = () => {
@@ -31,6 +32,7 @@ export const App: React.FC = () => {
         <EligibilityWizard initialCountry={selectedCountry} />
         <PeerProofRibbon />
         <FaqSection />
+        <ClosingConsultation onOpenEvaluation={() => handleOpenEvaluation()} />
       </main>
       <Footer />
     </div>
